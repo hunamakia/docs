@@ -138,7 +138,13 @@ class BluePrintHTML < Redcarpet::Render::HTML
     if 3 == level
       debug "\t--RESET VARS--"
       # get the response method from the header
-      @@method = text.split("[")[1].gsub("]","")
+      if text.include? "["
+        # get the response method from the header
+        @@method = text.split("[")[1].gsub("]","")
+      else
+        puts "Blueprint parse error: No HTTP method on \"" + text +'"'
+        exit
+      end
       debug "\tMETHOD SET: " + @@method
     end
 
