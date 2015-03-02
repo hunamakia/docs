@@ -306,7 +306,7 @@ class BluePrintHTML < Redcarpet::Render::HTML
 
     if "request" == @@body_block
 
-      @@request_body = text.gsub("\n","")
+      @@request_body = text.gsub("\n","").gsub("&quot;",'"')
 
       debug "\t REQUEST BODY SET " + text.strip
 
